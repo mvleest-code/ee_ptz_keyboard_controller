@@ -23,7 +23,7 @@ def clear_screen():
 
 # Clear the screen at the start of the program.
 clear_screen()
-
+print("PTZ Keyboard Control, checking for cameras...")
 # Request the client settings, this will return the base URL.
 def clientsettings():
     with open('access_response.json') as user_file:
@@ -35,7 +35,6 @@ def clientsettings():
                     "authorization": token_type + access_token}
         response = requests.get(url, headers=headers)
         vmshostname = response.json()["httpsBaseUrl"]["hostname"]
-        print(vmshostname)
         return access_token, token_type, vmshostname
 
 # Request the cameras, and check for PTZ capabilities.
